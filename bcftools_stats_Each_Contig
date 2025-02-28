@@ -1,0 +1,19 @@
+#!/bin/bash
+
+ # Running bcftools stats on Each Contig
+
+# Loop over each contig and run bcftools stats
+while read -r contig; do
+    bcftools stats -r "$contig" speltoides_YANG_2023.vcf.gz > "/home/barrientosm/scratch/vcf_analysis/YANG_stats_contigs/stats_${contig}.txt"
+done < contigs_list_YANG.txt
+
+#Explanation:
+
+#while read -r contig: Reads each line from contigs_list_YANG.txt, where each line contains a contig name.
+
+#bcftools stats -r "$contig": Calculates VCF statistics for the specified contig.
+
+#> "...stats_${contig}.txt": Redirects the output to a file named after the contig.
+
+
+# Generates statistical summaries for each contig listed in contigs_list_YANG.txt, saving the output in individual files.
